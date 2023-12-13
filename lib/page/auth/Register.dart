@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../../firebase_auth_service.dart';
+import '../../injection_container.dart';
+import '../../service/firebase_auth_service.dart';
 import '../../nav_bar.dart';
 import 'Login.dart';
 
@@ -15,7 +16,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final FirebaseAuthService _authService = FirebaseAuthService();
+  final FirebaseAuthService _authService = sl();
 
   @override
   void dispose() {

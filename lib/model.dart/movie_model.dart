@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class MovieModel {
   final int? id;
   final String? tittle;
@@ -7,7 +11,6 @@ class MovieModel {
   final String? urlImage;
   final String? urlYutup;
   final String? overview;
-  bool? isLiked;
 
   MovieModel({
     required this.id,
@@ -32,4 +35,6 @@ class MovieModel {
         urlYutup: json['youtube_trailer'],
         overview: json['overview']);
   }
+
+   
 }

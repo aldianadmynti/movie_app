@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'package:movie_app/injection_container.dart';
 
 import 'firebase_options.dart';
 import 'page/auth/Login.dart';
@@ -10,6 +10,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await initDependency();
   runApp(const MainApp());
 }
 

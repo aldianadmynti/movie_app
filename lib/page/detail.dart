@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/model.dart/movie_model.dart';
+import 'package:movie_app/model.dart/movie_poster_model.dart';
+import 'package:movie_app/service/cloud_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../injection_container.dart';
 
 class DetailMovie extends StatelessWidget {
-  const DetailMovie({super.key, required this.model});
+  DetailMovie({super.key, required this.model});
   final MovieModel model;
+
+  void saveMovie(MovieModel model) async {
+
+    final CloudService _cloudService = sl();
+    await _cloudService
+        .saveMovie(MoviePosterModel(id: model.id, urlPoster: model.urlImage,));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +45,7 @@ class DetailMovie extends StatelessWidget {
           actions: [
             GestureDetector(
               onTap: () {
+                saveMovie(model);
                 Navigator.pop(context);
               },
               child: Container(
